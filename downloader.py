@@ -1,4 +1,4 @@
-from os import path, makedirs, remove, listdir
+from os import path, makedirs, remove, listdir, environ, system
 from re import sub, search
 from pytube import YouTube
 from instaloader import Instaloader, Post
@@ -176,14 +176,5 @@ def main():
     return file_path
 
 if __name__ == '__main__':
-        print('\033[0;35m______                    _                 _           ') 
-        print('|  _  \                  | |               | |          ')
-        print('| | | |_____      ___ __ | | ___   __ _  __| | ___ _ __ ')
-        print('| | | / _ \ \ /\ / / \'_ \| |/ _ \ / _` |/ _` |/ _ \ \'__|')
-        print('| |/ / (_) \ V  V /| | | | | (_) | (_| | (_| |  __/ |   ')
-        print('|___/ \___/ \_/\_/ |_| |_|_|\___/ \__,_|\__,_|\___|_|   ')
-        print('\033[0;32mSites disponíveis:\033[m\n- YouTube\n- SoundCloud\n- Instagram\n- Twitter/X')
-        
-        while True:
-            print('')
-            main()
+        file_path = download_youtube_video(environ.get('LINK'), 'mp3')
+        print(file_path)
