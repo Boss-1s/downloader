@@ -1,0 +1,23 @@
+name: Download YT Audio
+
+on:
+  workflow_dispatch:
+    inputs:
+      link:
+        description: Link to YT Video
+        type: string
+        required: true
+
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v6
+      - name: Install Dependancies and Run script
+        env:
+          LINK: ${{inputs.link}}
+        run: |
+          pip install -r requirements.txt
+          python downloader.py
